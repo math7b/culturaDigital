@@ -12,6 +12,8 @@ urlpatterns = [
     path('videos/', views.videos, name='videos'),
     path('games/', views.games, name='games'),
     path('atividades/', views.atividades, name='atividades'),
+    path('equipe/', views.equipe, name='equipe'),
+    path('sobre/', views.sobre, name='sobre'),
 ]
 if settings.DEBUG:  
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)  

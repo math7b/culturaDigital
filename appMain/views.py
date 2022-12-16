@@ -21,3 +21,9 @@ def games(request):
 def atividades(request): 
     tarefas = Tarefas.objects.all()
     return render(request,'atividades.html',{'tarefas':tarefas})
+
+def equipe(request): 
+    return render(request,'equipe.html')
+
+def sobre(request): 
+    return render(request,'about_us.html')
