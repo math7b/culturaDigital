@@ -153,7 +153,7 @@ def usuarios(request):
     context = {'users':users,'form':form}
     return render(request, 'usuarios.html', context)
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request, id):
     getUser = User.objects.get(id = id)
     countUser_tarefas = Tarefas.objects.filter(usuario=getUser).count()

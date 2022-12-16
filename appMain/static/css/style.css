@@ -89,6 +89,20 @@ button, input, td{
     border-bottom: 2px solid #18a770;
 }
 
+#card_01{
+    background-image: url("../img/images/children_PNG.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 25vh;
+    border-radius: 24px;
+}
+#card_02{
+    background-image: url("https://img.icons8.com/external-smashingstocks-thin-outline-smashing-stocks/512/external-Toys-education-smashingstocks-thin-outline-smashing-stocks.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 25vh;
+    border-radius: 24px;
+}
 
 @media only screen and (max-width: 800px){
     .main{
