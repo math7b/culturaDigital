@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Tarefas{% endblock %}
+
+{% block content %}
+<div class="container h-100">
+  <div class="row">
+    {%for tarefa in tarefas %}
+      {% if tarefa.publicado %}
+        {% if tarefa.categoria.tipo == 'Atividades' %}
+          <div class="col">
+            <div class="rounded card" style="width: 18rem;">
+                <img src="/media/{{tarefa.imagem}}" class="card-fluid" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{tarefa.nome}}</h5>
+                  <p class="card-text">{{tarefa.descricao}}</p>
+                  <a href="{{tarefa.link}}" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

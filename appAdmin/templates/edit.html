@@ -1,0 +1,25 @@
+{% extends 'repoNavbar.html' %}
+{% block 'titulo' %}{% block title %}Editar{% endblock %}{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar conteúdo</h5>
+        <a href="/dashboard"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+            <div class="modal-footer">
+              <a href="/dashboard"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button></a>
+              <button type="submit" value="Submit" class="btn btn-danger">Salvar</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

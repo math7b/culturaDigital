@@ -1,0 +1,25 @@
+{% extends 'dashboard.html' %}
+
+{% block 'conteudo' %}  
+<div class="container-fluid vh-100">
+    <div class="row px-5 h-25">
+        <div class="container d-flex justify-content-center flex-column p-5 headerHome text-white">
+            <h3>Bem-vindo(a), {{ user.get_short_name }}!</h3>
+            <h6 class="pt-3"> O que iremos fazer hoje? <span>&#128522;</span></h6>
+        </div>
+    </div>
+    <div class="container px-4 text-center py-5">
+        <div class="row gx-5">
+        <div class="col">
+        <div class="p-3 border bg-light">{{tarefas}}</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+        </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

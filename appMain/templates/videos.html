@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Videos{% endblock %}
+{% load embed_video_tags %}
+
+{% block content %}
+<div class="container h-100">
+  <div class="row">
+    {%for tarefa in tarefas %}
+      {% if tarefa.publicado %}
+        {% if tarefa.categoria.tipo == 'Videos' %}
+          <div class="col py-3">
+            <div class="rounded card" style="width: 18rem;">
+                {% video tarefa.link as my_video %}
+                  <img src="{{ my_video.thumbnail }}" class="card-img-top" alt="...">
+                {% endvideo %}
+                <div class="card-body">
+                  <h5 class="card-title">{{tarefa.nome}}</h5>
+                  <p class="card-text">{{tarefa.descricao}}</p>
+                  <a href="{{tarefa.link}}" class="btn btn-primary">Acessar</a>
+                </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
