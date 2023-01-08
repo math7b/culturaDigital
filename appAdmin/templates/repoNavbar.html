@@ -2,70 +2,74 @@
 
 {% block 'header' %}
 
-<div class="container-fluid d-flex px-3 justify-content-between align-items-end">
-    <div class="d-flex flex-row">
-      {% block 'navbar'%}
-      {% endblock %}
-    </div>
+<div class="container-fluid d-flex px-3 align-items-center justify-content-between">
   <div class="d-flex flex-row">
-      <div class="input-group rounded border rounded-pill">
-          <input type="search" class="form-control border-0 bg-transparent" placeholder="Pesquisar" aria-label="Search" aria-describedby="search-addon" />
-          <span class="input-group-text border-0 bg-transparent">
-              <span class="material-symbols-outlined" style="color:#18a770;">search</span> 
-          </span>
-      </div>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#addButton" class="btn btn-green text-white fw-bold ms-3">Adicionar </button>
+    {% block 'navbar'%}
+    {% endblock %}
   </div>
+  <div class="d-flex flex-row">
+    <div class="input-group rounded border rounded-pill">
+      <input type="search" class="form-control border-0 bg-transparent" placeholder="Pesquisar" aria-label="Search"
+        aria-describedby="search-addon" />
+      <span class="input-group-text border-0 bg-transparent">
+        <span class="material-symbols-outlined" style="color:#18a770;">search</span>
+      </span>
+    </div>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#addButton"
+      class="btn btn-green text-white fw-bold ms-3">Adicionar </button>
   </div>
+</div>
 
-  <div class="modal fade" id="addButton" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="addButton" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body"> 
-          <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nome">
-            </div>
-            <div class="mb-3">
-              <label for="link" class="form-label">Link</label>
-              <input type="text" class="form-control" id="link" name="link">
-            </div>
-            <div class="mb-3">
-              <label for="descricao" class="form-label">Descrição</label>
-              <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="form-label me-3">Matéria</label>
-              {{form.materia}}
-            </div>
-            <div class="mb-3">
-              <label class="form-label me-3">Categoria</label>
-              {{form.categoria}}
-            </div>
-            {% if user.groups.all.0.name == "Adminstracao" %}
-            <div>
-              <label class="form-label">Publicar:</label>
-              <input type="checkbox" class="form-check-input mx-3" id="publicado" name="publicado" aria-label="...">
-            </div>
-            {% endif %}
-            <div class="my-3">
-              <label class="form-label">Imagem de capa:</br><span class="text-black-50">(Ignorar se for cadastrar um vídeo do Youtube)</span></label>
-              <input type="text" class="form-control" id="link" name="link" placeholder="Insira o link da imagem aqui">
-              <h6 class="mx-auto text-center py-3">ou</h6>
-              <button><input type="file" id="imagem" name="imagem" class="opacity-0"></button>
-            </div>
-            
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
-              <button type="submit" value="Submit" class="btn btn-danger">Salvar</button>
-            </div>
-          </form>
+      <div class="modal-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome">
+          </div>
+          <div class="mb-3">
+            <label for="link" class="form-label">Link</label>
+            <input type="text" class="form-control" id="link" name="link">
+          </div>
+          <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label me-3">Matéria</label>
+            {{form.materia}}
+          </div>
+          <div class="mb-3">
+            <label class="form-label me-3">Categoria</label>
+            {{form.categoria}}
+          </div>
+          {% if user.groups.all.0.name == "Adminstracao" %}
+          <div>
+            <label class="form-label">Publicar:</label>
+            <input type="checkbox" class="form-check-input mx-3" id="publicado" name="publicado" aria-label="...">
+          </div>
+          {% endif %}
+          <div class="my-3">
+            <label class="form-label">Imagem de capa:</br><span class="text-black-50">(Ignorar se for cadastrar um vídeo
+                do Youtube)</span></label>
+            <input type="text" class="form-control" id="link" name="link" placeholder="Insira o link da imagem aqui">
+            <h6 class="mx-auto text-center py-3">ou</h6>
+            <button><input type="file" id="imagem" name="imagem" class="opacity-0"></button>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+            <button type="submit" value="Submit" class="btn btn-danger">Salvar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -75,17 +79,19 @@
 {% endblock %}
 
 {% if form.errors %}
-    <div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-        <span class="col-1 material-symbols-outlined">warning</span>
-        <div class="col px-3">Algo deu errado, tente novamente.</div>
-        <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+  role="alert" style="width:600px">
+  <span class="col-1 material-symbols-outlined">warning</span>
+  <div class="col px-3">Algo deu errado, tente novamente.</div>
+  <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 {% if form.is_valid %}
-    <div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-        <span class="col-1 material-symbols-outlined">select_check_box</span>
-        <div class="col px-3">Tarefa cadastrada com sucesso.</div>
-        <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+  role="alert" style="width:600px">
+  <span class="col-1 material-symbols-outlined">select_check_box</span>
+  <div class="col px-3">Tarefa cadastrada com sucesso.</div>
+  <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 {% endblock %}

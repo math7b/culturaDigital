@@ -1,8 +1,8 @@
 {% extends 'dashboard.html' %}
 
-{% block 'conteudo' %}  
+{% block 'conteudo' %}
 <div class="container-fluid vh-100">
-    <div class="row px-5 h-25">
+    <div class="row h-25">
         <div class="container d-flex justify-content-center flex-column p-5 headerHome text-white">
             <h3>Bem-vindo(a), {{ user.get_short_name }}!</h3>
             <h6 class="pt-3"> O que iremos fazer hoje? <span>&#128522;</span></h6>
@@ -10,7 +10,7 @@
     </div>
     <div class="container px-4 py-5">
         <div class="row g-5 pb-3">
-            <div class="col ">
+            <div class="col">
                 <div class="p-3 rounded bg-light fw-bold">
                     <img class="pe-3" src="https://img.icons8.com/color/512/create-new.png" style="height: 50px">
                     Crie conteúdo
@@ -24,25 +24,28 @@
             </div>
             <div class="col">
                 <div class="p-3 rounded bg-light fw-bold">
-                    <img class="pe-3" src="https://img.icons8.com/color/512/commercial-development-management.png" style="height: 50px">
+                    <img class="pe-3" src="https://img.icons8.com/color/512/commercial-development-management.png"
+                        style="height: 50px">
                     Cuide da equipe
                 </div>
             </div>
         </div>
         <div class="row gx-5">
-            <div class="col">
-                <div id="card_01" class="p-5" style="height: 300px; background-color: #e2eefa;">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 pb-3">
+                <div id="card_01" class="p-5" style="background-color: #e2eefa;">
                     <h2>Tecnologia & Educação</h3>
-                    <p style="max-width: 350px">Nossa missão é oferecer conteúdo gratuito para crianças na fase fundamental, todo o repositório é desenvolvido com acompanhamento pedagógico.</p>
+                        <p style="max-width: 350px">Nossa missão é oferecer conteúdo gratuito para crianças na fase
+                            fundamental, todo o repositório é desenvolvido com acompanhamento pedagógico.</p>
                 </div>
             </div>
-            <div class="col-4">
-                <div id="card_02" class="p-3 rounded bg-light" style="height: 300px">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+                <div id="card_02" class="p-3 rounded bg-light">
                     <h3>Conheça nosso repositório</h3>
-                    <a href="/tarefas"><button class="btn rounded-pill mt-3" style="border: 1px solid #c2b7ec;color: #9184d1">Acesse</button></a>
+                    <a href="/tarefas"><button class="btn rounded-pill mt-3"
+                            style="border: 1px solid #c2b7ec;color: #9184d1">Acesse</button></a>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 </div>
 {% endblock %}

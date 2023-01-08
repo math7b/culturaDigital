@@ -3,30 +3,33 @@
 {% block title %}Tarefas{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-md-center align-items-center h-100">
-    <div class="d-flex justify-content-around w-50 text-center">
-        <div class="card col-4 m-5 border border-success justify-content-between p-3">
-            <a href="/videos" class="nav-link text-dark">
-                <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/aula-de-video.png' %}">
-                <h1>Vídeos</h1>
-                <p class=" text-justify">Conteúdo baseado no cronograma escolar e avaliado por especialistas de confiança.</p>
-            </a>    
-        </div>
-        <div class="card col-4 m-5 border border-success p-3 justify-content-between p-3">
-            <a href="/games" class="nav-link text-dark">
-                <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/game-boy.png' %}">
-                <h1>Jogos</h1>
-                <p>Diversos jogos digitais com conteúdos selecionados para os alunos de todas as serie.</p>
-            </a>
-        </div>
-        <div class="card col-4 m-5 border border-success p-3 justify-content-between p-3">
-            <a href="/atividades" class="nav-link text-dark">
-                <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/task.png' %}">
-                <h1>Atividades</h1>
-                <p>Conteúdo disponivel para todos os anos do ensino fundamental I, podendo ser filtrado por matéria.</p>
-            </a>
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="container text-center">
+        <div class="row justify-content-around">
+            <div class="card col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 col-xxl-3 border border-success">
+                <a href="/videos" class="nav-link text-dark">
+                    <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/aula-de-video.png' %}">
+                    <h1>Vídeos</h1>
+                    <p class=" text-justify">Conteúdo baseado no cronograma escolar e avaliado por especialistas de
+                        confiança.</p>
+                </a>
+            </div>
+            <div class="card col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 col-xxl-3 border border-success">
+                <a href="/games" class="nav-link text-dark">
+                    <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/game-boy.png' %}">
+                    <h1>Jogos</h1>
+                    <p>Diversos jogos digitais com conteúdos selecionados para os alunos de todas as serie.</p>
+                </a>
+            </div>
+            <div class="card col-10 col-sm-10 col-md-4 col-lg-3 col-xl-3 col-xxl-3 border border-success">
+                <a href="/atividades" class="nav-link text-dark">
+                    <img class="img-fluid w-25 mx-auto m-3" src="{% static 'img/icons/task.png' %}">
+                    <h1>Atividades</h1>
+                    <p>Conteúdo disponivel para todos os anos do ensino fundamental I, podendo ser filtrado por matéria.
+                    </p>
+                </a>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
-

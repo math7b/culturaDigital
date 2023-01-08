@@ -1,27 +1,29 @@
 {% extends 'dashboard.html' %}
 {% load crispy_forms_tags %}
-{% block 'conteudo' %}  
+{% block 'conteudo' %}
 
 <div class="container-fluid vh-100 py-5" style="background-color: #f5f9fc">
-  <div class="row px-3">
-    <div class="col-3">
+  <div class="row px-3 justify-content-center">
+    <div class="col-10 col-sm-10 col-md col-lg-3 col-xl-3 col-xxl-3 pb-3">
       <div class="container-fluid bg-white rounded border">
-        <img src="https://img.icons8.com/color/512/test-account.png" class="img-fluid rounded mx-auto d-block pt-5" alt="..." style="width:30%">
+        <img src="https://img.icons8.com/color/512/test-account.png" class="img-fluid rounded mx-auto d-block pt-5"
+          alt="..." style="width:30%">
         <h5 class="text-center pt-2">{{getUser.get_short_name}}</h6>
-        <p class="text-center lh-1 text-muted">{{getUser.groups.all.0.name}}</p>
-        <div class="row text-center py-3">
-          <div class="col">
-            <h6>{{countUser_tarefaspublicadas}}</h6>
-            <p>Tarefas publicadas</p>
+          <p class="text-center lh-1 text-muted">{{getUser.groups.all.0.name}}</p>
+          <div class="row text-center py-3">
+            <div class="col">
+              <h6>{{countUser_tarefaspublicadas}}</h6>
+              <p>Tarefas publicadas</p>
+            </div>
+            <div class="col border-start">
+              <h6>{{countUser_tarefas}}</h6>
+              <p>Total de tarefas</p>
+            </div>
           </div>
-          <div class="col border-start">
-            <h6>{{countUser_tarefas}}</h6>
-            <p>Total de tarefas</p>
+          <div class="container-fluid py-3 d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-primary px-4" data-bs-toggle="modal"
+              data-bs-target="#modalProfile">Editar perfil</button>
           </div>
-        </div>
-        <div class="container-fluid py-3 d-flex justify-content-center">
-          <button type="button" class="btn btn-outline-primary px-5" data-bs-toggle="modal" data-bs-target="#modalProfile">Editar perfil</button>
-        </div>
       </div>
     </div>
 
@@ -48,7 +50,8 @@
                 {% else %}
                 <td><span class="text-success fw-bold">Sim</span></td>
                 {% endif %}
-                <td><a href="{% url 'edit' tarefa.id %}"><span class="text-muted material-symbols-outlined">edit</a></span></td>
+                <td><a href="{% url 'edit' tarefa.id %}"><span
+                      class="text-muted material-symbols-outlined">edit</a></span></td>
               </tr>
             </tbody>
             {% endfor %}
@@ -59,48 +62,51 @@
   </div>
 </div>
 
-  <div class="modal fade" id="modalProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Editar perfil</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div>
-            <div class="row py-3">
-              <div class="col">
-                <h6>Alterar senha</h6>
-                <p class="txt-muted">Deseja alterar a senha do usuario ?</p>
-              </div>
-              <div class="col-4 d-flex align-items-center">
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalAlterarsenha">Alterar senha</button>
-              </div>
+<div class="modal fade" id="modalProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar perfil</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="row py-3">
+            <div class="col">
+              <h6>Alterar senha</h6>
+              <p class="txt-muted">Deseja alterar a senha do usuario ?</p>
             </div>
-          </div>
-          <div class="border-top">
-            <div class="row py-3">
-              <div class="col">
-                <h6>Deletar usuário</h6>
-                <p class="txt-muted">Deseja deletar usuário? Essa ação não pode ser revertida.</p>
-              </div>
-              <div class="col-4 d-flex align-items-center">
-                <a href="{% url 'deleteUser' getUser.id %}"><button type="button" class="btn btn-danger">Deletar usuário</button></a>
-              </div>
+            <div class="col-4 d-flex align-items-center">
+              <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                data-bs-target="#modalAlterarsenha">Alterar senha</button>
             </div>
           </div>
         </div>
+        <div class="border-top">
+          <div class="row py-3">
+            <div class="col">
+              <h6>Deletar usuário</h6>
+              <p class="txt-muted">Deseja deletar usuário? Essa ação não pode ser revertida.</p>
+            </div>
+            <div class="col-4 d-flex align-items-center">
+              <a href="{% url 'deleteUser' getUser.id %}"><button type="button" class="btn btn-danger">Deletar
+                  usuário</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn  btn-outline-dark px-4" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary px-5">Salvar</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn  btn-outline-dark px-4" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary px-5">Salvar</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Modal Alterar senha do usuario -->
-<div class="modal fade" id="modalAlterarsenha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1" aria-labelledby="modalAlterarsenha" aria-hidden="true">
+<!-- Modal Alterar senha do usuario -->
+<div class="modal fade" id="modalAlterarsenha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="1"
+  aria-labelledby="modalAlterarsenha" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -116,22 +122,24 @@
         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal" aria-label="Close">Fechar</button>
         <button type="submit" value="Submit" class="btn btn-danger">Salvar</button>
       </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>
 {% if form.errors %}
-    <div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-        <span class="col-1 material-symbols-outlined">warning</span>
-        <div class="col px-3">Senha invalida, tente novamente.</div>
-        <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+  role="alert" style="width:600px">
+  <span class="col-1 material-symbols-outlined">warning</span>
+  <div class="col px-3">Senha invalida, tente novamente.</div>
+  <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 {% if form.is_valid %}
-    <div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-        <span class="col-1 material-symbols-outlined">select_check_box</span>
-        <div class="col px-3">Senha alterada com sucesso.</div>
-        <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+  role="alert" style="width:600px">
+  <span class="col-1 material-symbols-outlined">select_check_box</span>
+  <div class="col px-3">Senha alterada com sucesso.</div>
+  <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 {% endif %}
 {% endblock %}

@@ -3,57 +3,67 @@
 {% load static %}
 
 
-{% block 'conteudo' %}  
+{% block 'conteudo' %}
 <div class="container-fluid px-4">
     <div class="container-fluid rounded">
-        <div class="row headerschool">
-            <div class="col-5 px-5 text-white d-flex justify-content-center flex-column">
+        <div class="row d-flex headerschool justify-content-center">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5
+            px-5 text-white justify-content-center flex-column">
                 <h2 class="fw-bold">Bem-vindo(a)!</h2>
-                <p>Essa é a área administrativa, acesso restrito para Administradores! Liste e adicione novos usuários.</p>
+                <p>Essa é a área administrativa, acesso restrito para Administradores! Liste e adicione novos usuários.
+                </p>
             </div>
-            <div class="col"><img src="{% static 'img/images/school_header.png' %}" class="img-fluid" alt="..."></div>
+            <div class="col-10 col-sm-10 col-md-6 col-lg-7 col-xl-7 col-xxl-7">
+                <img src="https://avatars.githubusercontent.com/u/99265156?v=4" class="img-fluid" alt="...">
+            </div>
         </div>
     </div>
-
+    <!-- {% static 'img/images/school_header.png' %} -->
     <div class="d-flex justify-content-between mt-4 px-4">
         <h2>Usuários cadastrados</h2>
-        <button type="button" class="btn btn-green text-white" data-bs-toggle="modal" data-bs-target="#createUsuario"><span class="material-symbols-outlined align-middle pe-1">add</span>Adicionar</button>
+        <button type="button" class="btn btn-green text-white" data-bs-toggle="modal" data-bs-target="#createUsuario">
+            <span class="material-symbols-outlined align-middle pe-1">add</span>Adicionar</button>
     </div>
 
     <div class="container-fluid d-flex flex-wrap">
-    {% for user in users %}
+        {% for user in users %}
         <div class="card m-3  cardusers" style="width: 22rem;">
             <div class="card-body">
                 <div class="row">
                     <div class="col-2">
                         {% if user.groups.all.0.name == "Escola" %}
-                            <div class="rounded rounded-pill">
-                                <img src="https://img.icons8.com/ios-filled/344/school.png" class="img-fluid" alt="...">
-                            </div>
+                        <div class="rounded rounded-pill">
+                            <img src="https://img.icons8.com/ios-filled/344/school.png" class="img-fluid" alt="...">
+                        </div>
                         {% elif user.groups.all.0.name == "Adminstracao" %}
-                            <div class="rounded rounded-pill">
-                                <img src="https://img.icons8.com/ios-filled/344/admin-settings-male.png" class="img-fluid" alt="...">
-                            </div>
+                        <div class="rounded rounded-pill">
+                            <img src="https://img.icons8.com/ios-filled/344/admin-settings-male.png" class="img-fluid"
+                                alt="...">
+                        </div>
                         {% else %}
-                            <div class="rounded rounded-pill">
-                                <img src="https://img.icons8.com/ios-filled/344/admin-settings-male.png" class="img-fluid" alt="...">
-                            </div>
+                        <div class="rounded rounded-pill">
+                            <img src="https://img.icons8.com/ios-filled/344/admin-settings-male.png" class="img-fluid"
+                                alt="...">
+                        </div>
                         {% endif %}
                     </div>
                     <div class="col"></div>
                     <div class="col-2">
                         <div class="btn-group dropend">
-                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false"><span class="material-symbols-outlined text-secondary">more_vert</span></button></a>
+                            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false"><span
+                                    class="material-symbols-outlined text-secondary">more_vert</span></button></a>
                             <ul class="dropdown-menu px-3">
-                                <a href="{% url 'profile' user.id %}" class="text-decoration-none text-dark">Editar usuario</a>
-                                <a href="{% url 'deleteUser' user.id %}" class="text-decoration-none text-dark">Deletar usuario</a>
+                                <a href="{% url 'profile' user.id %}" class="text-decoration-none text-dark">Editar
+                                    usuario</a>
+                                <a href="{% url 'deleteUser' user.id %}" class="text-decoration-none text-dark">Deletar
+                                    usuario</a>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col py-2">
                     <h5 class="card-title fw-bold">{{user.get_short_name}}</h5>
-                    <h6 class="card-subtitle text-black-50">@{{user.get_username}}</h6>    
+                    <h6 class="card-subtitle text-black-50">@{{user.get_username}}</h6>
                 </div>
                 <div class="row">
                     <div class="col">
@@ -68,72 +78,76 @@
                     <div class="col-2">
                         <a href="{% url 'profile' user.id %}" class="text-decoration-none text-dark">
                             <span class="material-symbols-outlined">arrow_forward</span>
-                        </a> 
+                        </a>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
-    {% endfor %}
+        {% endfor %}
     </div>
-</div>  
+</div>
 
-{% block 'modalDelete' %} 
+{% block 'modalDelete' %}
 {% endblock %}
 
 
-<div class="modal fade" id="createUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="createUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cadastrar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Nome da Escola</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name"
+                            placeholder="Insira o nome real da escola">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                            placeholder="Insira o Username (não use espaços, pontos ou virgulas.)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password1" class="form-label">Senha</label>
+                        <input type="password" class="form-control" id="password1" name="password1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Confirme a senha</label>
+                        <input type="password" class="form-control" id="password2" name="password2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password2" class="form-label pe-3">Tipo de usuario:</label>
+                        {{form.group}}
+                    </div>
+                    <div class="d-grid my-3">
+                        <button type="submit" value="Submit" class="btn btn-success">Salvar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="modal-body"> 
-            <form action="" method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="first_name" class="form-label">Nome da Escola</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Insira o nome real da escola">
-                </div>
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Insira o Username (não use espaços, pontos ou virgulas.)">
-                </div>
-                <div class="mb-3">
-                    <label for="password1" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password1" name="password1">
-                </div>
-                <div class="mb-3">
-                    <label for="password2" class="form-label">Confirme a senha</label>
-                    <input type="password" class="form-control" id="password2" name="password2">
-                </div>
-                <div class="mb-3">
-                    <label for="password2" class="form-label pe-3">Tipo de usuario:</label>
-                    {{form.group}}
-                </div> 
-                <div class="d-grid my-3">
-                    <button type="submit" value="Submit" class="btn btn-success">Salvar</button>
-                  </div>              
-            </form>
-        </div>
-      </div>
     </div>
-  </div>
-  
-    {% if form.errors %}
-        <div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-            <span class="col-1 material-symbols-outlined">warning</span>
-            <div class="col px-3">Dados inválidos, tente novamente.</div>
-            <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endif %}
-    {% if form.is_valid %}
-        <div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3" role="alert" style="width:600px">
-            <span class="col-1 material-symbols-outlined">select_check_box</span>
-            <div class="col px-3">Usuário cadastrado com sucesso.</div>
-            <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endif %}
-    
-{% endblock %}
+</div>
 
+{% if form.errors %}
+<div class="alert alert-danger d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+    role="alert" style="width:600px">
+    <span class="col-1 material-symbols-outlined">warning</span>
+    <div class="col px-3">Dados inválidos, tente novamente.</div>
+    <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+{% if form.is_valid %}
+<div class="alert alert-success d-flex justify-content-between align-items-center position-fixed bottom-0 start-0 m-3"
+    role="alert" style="width:600px">
+    <span class="col-1 material-symbols-outlined">select_check_box</span>
+    <div class="col px-3">Usuário cadastrado com sucesso.</div>
+    <button type="button" class="btn-close col-1" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% endblock %}

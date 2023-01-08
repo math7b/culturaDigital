@@ -3,70 +3,78 @@
 
 
 {% block 'navbar'%}
-    <a href="/dashboard/jogos/" class="text-decoration-none fw-bold text-dark itemsNavbar"><div class="px-3">Repositório</div></a>
-    <a href="/dashboard/jogos/pendentes" class="text-decoration-none link-secondary itemsNavbar"><div class="px-3">Pendente</div></a>
+<a href="/dashboard/jogos/" class="text-decoration-none fw-bold text-dark itemsNavbar">
+  <div class="px-3">Repositório</div>
+</a>
+<a href="/dashboard/jogos/pendentes" class="text-decoration-none link-secondary itemsNavbar">
+  <div class="px-3">Pendente</div>
+</a>
 {% endblock %}
 
-{% block content %} 
+{% block content %}
 <div class="container py-5">
-    <h1>Publicados</h1>
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Matéria</th>
-                <th scope="col">Descrição</th>  
-                <th scope="col">Link</th>        
-                <th scope="col">Publicado</th>    
-                <th scope="col"></th>     
-            </tr>
-        </thead>
-        {% for tarefa in tarefas %}
-          {% if tarefa.categoria.tipo == 'Jogos' %}
-          <tbody>
-            {% if tarefa.publicado %}
-            <tr>
-              <td>{{tarefa.nome}}</td>
-              <td>{{tarefa.materia}}</td>
-              <td>{{tarefa.descricao}}</td>
-              <td>{{tarefa.link}}</td>
-              <td><span class="text-success fw-bold">Sim</span></td>
-              <td>
-                <a href="{% url 'edit' tarefa.id %}"><span class="mx-3 p-1 rounded-circle material-symbols-outlined text-dark" style="background-color: #eaf0f5; font-size: 1em;">edit</a></span>
-                <span class="material-symbols-outlined p-1 rounded-circle text-dark" style="background-color: #eaf0f5; font-size: 1em;" data-bs-toggle="modal" data-bs-target="#deleteModal">delete</span>
-              </td>
-            </tr> 
+  <h1>Publicados</h1>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Matéria</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Link</th>
+        <th scope="col">Publicado</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for tarefa in tarefas %}
+    {% if tarefa.categoria.tipo == 'Jogos' %}
+    <tbody>
+      {% if tarefa.publicado %}
+      <tr>
+        <td>{{tarefa.nome}}</td>
+        <td>{{tarefa.materia}}</td>
+        <td>{{tarefa.descricao}}</td>
+        <td>{{tarefa.link}}</td>
+        <td><span class="text-success fw-bold">Sim</span></td>
+        <td>
+          <a href="{% url 'edit' tarefa.id %}"><span class="mx-3 p-1 rounded-circle material-symbols-outlined text-dark"
+              style="background-color: #eaf0f5; font-size: 1em;">edit</a></span>
+          <span class="material-symbols-outlined p-1 rounded-circle text-dark"
+            style="background-color: #eaf0f5; font-size: 1em;" data-bs-toggle="modal"
+            data-bs-target="#deleteModal">delete</span>
+        </td>
+      </tr>
 
-            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-              <div class="modal-dialog py-5">
-                <div class="modal-content p-3">
-                  <div class="modal-body">
-                      <div class="row p-1">
-                          <div class="col-2">
-                              <img class="img-fluid" src="https://img.icons8.com/color/344/delete-forever.png">
-                          </div>
-                          <div class="col">
-                              <h5 class="modal-title">Deseja deletar esse item ?</h5>
-                              <p class="py-3 pe-5 text-black-50">Se confirmado, esse processo não poderá ser revertido.</p>
-                          </div>
-                          <div class="col-1">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button></a>
-                    <a href="{% url 'deletarTarefa' tarefa.id %}"><button type="button" class="btn btn-danger">Salvar</button></a>
-                  </div>
+      <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog py-5">
+          <div class="modal-content p-3">
+            <div class="modal-body">
+              <div class="row p-1">
+                <div class="col-2">
+                  <img class="img-fluid" src="https://img.icons8.com/color/344/delete-forever.png">
+                </div>
+                <div class="col">
+                  <h5 class="modal-title">Deseja deletar esse item ?</h5>
+                  <p class="py-3 pe-5 text-black-50">Se confirmado, esse processo não poderá ser revertido.</p>
+                </div>
+                <div class="col-1">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
               </div>
-            </div>  
-            {% endif %}  
-          </tbody>
-          {% endif %}
-        {% endfor%}
-    </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button></a>
+              <a href="{% url 'deletarTarefa' tarefa.id %}"><button type="button"
+                  class="btn btn-danger">Salvar</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </tbody>
+    {% endif %}
+    {% endfor%}
+  </table>
 
 </div>
 {% endblock %}
